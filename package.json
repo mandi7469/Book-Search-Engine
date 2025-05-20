@@ -1,7 +1,7 @@
 {
   "name": "googlebooks-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "MERN stack starter code built with a RESTful API - refactored to be a GraphQL API built with Apollo Server",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
@@ -11,7 +11,7 @@
     "render-build":"npm install && npm run build"
   },
   "keywords": [],
-  "author": "",
+  "author": "Amanda Changa",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^8.2.0"
