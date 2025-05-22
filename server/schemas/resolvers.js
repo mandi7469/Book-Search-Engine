@@ -1,6 +1,8 @@
+// imports
 const { User } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
+// definiing the resolvers for handling queries and mutations
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
