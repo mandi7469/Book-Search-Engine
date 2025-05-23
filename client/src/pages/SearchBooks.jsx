@@ -1,24 +1,17 @@
-import { useState, useEffect } from 'react';
-import {
-  Container,
-  Col,
-  Form,
-  Button,
-  Card,
-  Row
-} from 'react-bootstrap';
+import { useState, useEffect } from "react";
+import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
 
-import { useMutation } from '@apollo/client';
-import { SAVE_BOOK } from '../utils/mutations';
-import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
+import { useMutation } from "@apollo/client";
+import { SAVE_BOOK } from "../utils/mutations";
+import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
 
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
 const SearchBooks = () => {
   // create state for holding returned google api data
   const [searchedBooks, setSearchedBooks] = useState([]);
   // create state for holding our search field data
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState("");
 
   // create state to hold saved bookId values
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
@@ -45,21 +38,21 @@ const SearchBooks = () => {
       );
 
       if (!response.ok) {
-        throw new Error('something went wrong!');
+        throw new Error("something went wrong!");
       }
 
       const { items } = await response.json();
 
       const bookData = items.map((book) => ({
         bookId: book.id,
-        authors: book.volumeInfo.authors || ['No author to display'],
+        authors: book.volumeInfo.authors || ["No author to display"],
         title: book.volumeInfo.title,
         description: book.volumeInfo.description,
-        image: book.volumeInfo.imageLinks?.thumbnail || '',
+        image: book.volumeInfo.imageLinks?.thumbnail || "",
       }));
 
       setSearchedBooks(bookData);
-      setSearchInput('');
+      setSearchInput("");
     } catch (err) {
       console.error(err);
     }
@@ -115,16 +108,16 @@ const SearchBooks = () => {
       </div>
 
       <Container>
-        <h2 className='pt-5'>
+        <h2 className="pt-5">
           {searchedBooks.length
             ? `Viewing ${searchedBooks.length} results:`
-            : 'Search for a book to begin'}
+            : "Search for a book to begin"}
         </h2>
         <Row>
           {searchedBooks.map((book) => {
             return (
               <Col md="4" key={book.bookId}>
-                <Card border="dark" className='mb-3'>
+                <Card border="dark" className="mb-3">
                   {book.image ? (
                     <Card.Img
                       src={book.image}
@@ -144,9 +137,11 @@ const SearchBooks = () => {
                         className="btn-block btn-info"
                         onClick={() => handleSaveBook(book.bookId)}
                       >
-                        {savedBookIds?.some((savedId) => savedId === book.bookId)
-                          ? 'Book Already Saved!'
-                          : 'Save This Book!'}
+                        {savedBookIds?.some(
+                          (savedId) => savedId === book.bookId
+                        )
+                          ? "Book Already Saved!"
+                          : "Save This Book!"}
                       </Button>
                     )}
                   </Card.Body>
