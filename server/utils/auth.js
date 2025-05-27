@@ -6,16 +6,15 @@ const { GraphQLError } = require("graphql");
 const secret = "mysecretsshhhhh";
 const expiration = "2h";
 
+// defines an AuthenticationError that can be thrown in GraphQL resolvers
 module.exports = {
-  // defines an AuthenticationError that can be thrown in GraphQL resolvers
-  AuthenticationError: new GraphQLError("Could not authenticate user", {
+  AuthenticationError: new GraphQLError("Could not authenticate user.", {
     extensions: {
       code: "UNAUTHENTICATED",
     },
   }),
-
   authMiddleware: function ({ req }) {
-    // allows token to be sent via req.body req.query or headers
+    // allows token to be sent via req.body, req.query, or headers
     let token = req.body.token || req.query.token || req.headers.authorization;
 
     // ["Bearer", "<tokenvalue>"]

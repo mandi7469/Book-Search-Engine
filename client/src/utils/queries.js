@@ -1,5 +1,5 @@
 // imports
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 // gql query for the logged in user 'me'
 export const QUERY_ME = gql`

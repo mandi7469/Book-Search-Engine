@@ -1,5 +1,5 @@
 // imports
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 // defined gql mutations
 export const LOGIN_USER = gql`

@@ -1,13 +1,9 @@
 // imports
 const express = require("express");
 const path = require("path");
-
-// import the ApolloServer class
 const { ApolloServer } = require("@apollo/server");
 const { expressMiddleware } = require("@apollo/server/express4");
 const { authMiddleware } = require("./utils/auth");
-
-// import the two parts of a graphQL schema
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
 
@@ -19,7 +15,7 @@ const server = new ApolloServer({
 
 const app = express();
 
-// create a new instance of an Apollo server with graphQL scheme
+// created a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async () => {
   await server.start();
 
@@ -32,6 +28,7 @@ const startApolloServer = async () => {
       context: authMiddleware,
     })
   );
+
   if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../client/dist")));
 

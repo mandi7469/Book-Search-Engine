@@ -2,7 +2,7 @@
 const { User } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 
-// definiing the resolvers for handling queries and mutations
+// defined the resolvers for handling queries and mutations
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
@@ -10,6 +10,7 @@ const resolvers = {
         const userData = await User.findOne({ _id: context.user._id }).select(
           "-__v -password"
         );
+
         return userData;
       }
 

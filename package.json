@@ -1,5 +1,5 @@
 {
-  "name": "googlebooks-app",
+  "name": "book-search-engine",
   "version": "1.0.0",
   "description": "MERN stack starter code built with a RESTful API - refactored to be a GraphQL API built with Apollo Server",
   "main": "server/server.js",
